@@ -46,7 +46,6 @@ export default function Navbar() {
             <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-cyan-300">
               Agentia
             </span>
-
             <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500">
               World
             </span>
@@ -107,6 +106,47 @@ export default function Navbar() {
             </motion.button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden absolute top-20 left-0 w-full bg-gray-900/90 backdrop-blur-lg shadow-lg rounded-b-md"
+            >
+              <div className="px-6 py-4 space-y-2">
+                {navLinks.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Link
+                      href={item.path}
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-cyan-500/20 transition-all duration-200"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: navLinks.length * 0.1 }}
+                >
+                  <button className="w-full mt-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-md font-medium shadow-lg hover:shadow-blue-500/25 transition-shadow duration-300">
+                    Get Started
+                  </button>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );

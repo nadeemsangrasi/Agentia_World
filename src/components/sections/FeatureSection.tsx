@@ -2,7 +2,7 @@ import { FaBrain, FaRobot, FaBolt, FaShieldAlt } from "react-icons/fa";
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 px-20" id="features">
+    <section className="py-20 px-6 sm:px-20" id="features">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500">
           Revolutionizing AI-Powered Automation
